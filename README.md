@@ -44,17 +44,6 @@ To guarantee structural integrity, strict lineage tracing, and computational eff
 | <img src="https://img.shields.io/badge/Layer-Silver-silver?style=flat-square" alt="Silver"/> | **Conformed Data** | `02_silver_clean` | **Data Conformance & Feature Engineering:** Enforces dynamic schema column alignment. Drops invalid regional entries and executes a high-performance regex engine to split, clean, and yield 5 strategic search variables per row. |
 | <img src="https://img.shields.io/badge/Layer-Gold-gold?style=flat-square" alt="Gold"/> | **Analytical Marts** | `03` to `09` | **Enrichment & Dimensional Modeling:** Integrates external metadata through multi-fallback API protocols (Twitch/IGDB ratings, structural genre dictionaries, and global financial records). Splits the master dataframe into specialized, zero-bias analytical data marts. |
 
-## 2. Data Architecture & Medallion Design
-
-### 2.1 The Medallion Architecture Blueprint (Bronze → Silver → Gold)
-To guarantee structural integrity, strict lineage tracing, and computational efficiency, the pipeline implements a customized enterprise version of the **Medallion Architecture**. The system ingests data into an immutable raw state and executes progressive refinement, validation, and dimensional modeling phases before delivering high-fidelity analytics schemas.
-
-| Architecture Layer | Technical Status | Platform Checkpoint | Data Governance & Transformation Rules |
-| :---: | :--- | :---: | :--- |
-| <img src="https://img.shields.io/badge/Layer-Bronze-brown?style=flat-square" alt="Bronze"/> | **Raw Staging** | `01_extract_raw` | **Immutable Ingestion Zone:** Captures the raw snapshot of the Wikipedia HTML table stream. No data pruning, row filtration, or header renaming is allowed at this stage to secure full historical provenance. |
-| <img src="https://img.shields.io/badge/Layer-Silver-silver?style=flat-square" alt="Silver"/> | **Conformed Data** | `02_silver_clean` | **Data Conformance & Feature Engineering:** Enforces dynamic schema column alignment. Drops invalid regional entries and executes a high-performance regex engine to split, clean, and yield 5 strategic search variables per row. |
-| <img src="https://img.shields.io/badge/Layer-Gold-gold?style=flat-square" alt="Gold"/> | **Analytical Marts** | `03` to `09` | **Enrichment & Dimensional Modeling:** Integrates external metadata through multi-fallback API protocols (Twitch/IGDB ratings, structural genre dictionaries, and global financial records). Splits the master dataframe into specialized, zero-bias analytical data marts. |
-
 ### 2.2 End-to-End Data Pipeline Lineage
 The flowchart below maps the linear execution path of the ecosystem, showcasing how each module operates with strict decoupling—reading exclusively from the artifact produced by the previous staging layer to respect the Single Responsibility Principle.
 
